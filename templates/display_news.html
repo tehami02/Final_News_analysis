@@ -86,16 +86,16 @@
 <body>
     {% include 'navbar.html' %}
     <div class="content">
-    <h1>Top News from {{ source }}</h1>
-    <ul>
-        {% for article in articles %}
-        <li>
-            <a href="/analyze?url={{ article.link }}" target="_blank">{{ article.title }}</a>
-            <p class="source">{{ source }}</p> <!-- Changed line -->
-        </li>
-        {% endfor %}
-    </ul>
-    <a href="/" class="back-link">Back to Home</a>
-</div>
+        <h1>Top News</h1>
+        <ul>
+            {% for article in articles %}
+            <li>
+                <a href="{{ url_for('analyze', heading=article['heading']) }}">{{ article['heading'] }}</a>
+                <p class="source">{{ article['source'] }}</p> <!-- Publisher source -->
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="/" class="back-link">Back to Home</a>
+    </div>
 </body>
 </html>
